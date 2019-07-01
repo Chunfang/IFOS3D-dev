@@ -24,7 +24,7 @@ Wave propagation can be described in the velocity-stress formulation. This formu
 \frac{\partial\epsilon_{ij}}{\partial t}=\frac{1}{2}\left (\frac{\partial v_i}{\partial x_j}+\frac{\partial v_j}{\partial x_i}\right ).
  \end{split}\label{equ:wave_equvel}
 \end{equation}
-The elastic medium is described by the density $\rho$ and the Lam\'e parameters $\lambda$ and $\mu$. $\tau_{ij}$ denotes the elements of the stress tensor and $\epsilon_{ij}$ denotes the elements of the strain tensor. The trace of the stress tensor is given by $\Theta$.
+The elastic medium is described by the density $\rho$ and the Lam\'e parameters $\lambda$ and $\mu$. $\tau_{ij}$ denotes the elements of the stress tensor and $\epsilon_{ij}$ denotes the elements of the strain tensor. The trace of the strain tensor is given by $\Theta$.
 \subsection{Finite difference modeling}\label{sec:FDmodeling}
 For the simulations of 3D elastic wave propagation these equations are approximated by finite differences (FD). For the calculation of partial derivatives, the wavefield parameters and model parameters are discretised on a staggered-grid system \citep{Vir86, Lev88}. The 3D staggered-grid system is sketched in Figure~\ref{fig:stag_grid}. We use a Cartesian grid (x,y,z)=(i,j,k). The model parameters $\lambda$, $\mu$ and $\rho$ and the diagonal stress components $\sigma_{ii}$ are localised on the full grid points, whereas velocities and off-diagonal stress components are calculated on a grid which is half a grid point shifted to the original system. Compared to a conventional Cartesian grid, the staggered grid enables a larger grid spacing for the same level of accuracy.\\
 \begin{figure}
