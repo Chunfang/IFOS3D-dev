@@ -4,10 +4,6 @@
 The inversion problem is solved by a conjugate gradient method and the gradients are computed in the frequency domain with the adjoint method.  
 The forward modeling is done by a time domain finite difference scheme. 
 
+This branch is aimed to accelerate the inversion process by first fitting the low frequency samples on coarse grids, and gradually refine the grid towards higher frequencies.  
+
 IFOS3D is the reverse (inverse) of our 3D finite difference forward solver [**SOFI3D**](https://git.scc.kit.edu/GPIAG-Software/SOFI3D).
-
-The [**manual**](https://git.scc.kit.edu/GPIAG-Software/IFOS3D/wikis/home) can be downloaded [here](https://git.scc.kit.edu/GPIAG-Software/IFOS3D/wikis/home).
-
-# Download and Newsletter
-
-You can Download the current [**Beta-Version**](https://git.scc.kit.edu/GPIAG-Software/IFOS3D/tree/master).
