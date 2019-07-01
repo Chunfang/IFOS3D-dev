@@ -1,0 +1,20 @@
+35.0	32.0	92.0
+35.8    32.0    92.0
+36.6    32.0    92.0
+37.4    32.0    92.0
+38.2    32.0    92.0
+39.0    32.0    92.0
+39.8    32.0    92.0
+40.6    32.0    92.0
+41.4    32.0    92.0
+#
+#(comment line is indicated by # or % as first character)
+#
+# Parameters for each receiver postiton (one receiver per line):
+#
+#       XSRC            YSRC            ZSRC
+#
+# Symbols: 
+# XSRC= x-coordinate of source point [meter]
+# YSRC= y-coordinate of source point [meter] (vertical)
+# ZSRC= z-coordinate of source point [meter] 

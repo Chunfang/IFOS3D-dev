@@ -1,0 +1,68 @@
+\chapter{Getting started}
+\label{Gettingstarted}
+\section{Requirements}
+\label{requirements}
+IFOS3D was tested on different Linux platforms. To run IFOS3D an MPI implementation (one of the three listed below) and a C-Compiler is required.
+The code was tested on our local workstation cluster using Suse Linux and OpenMPI. Additionally applications were performed on the JUROPA and JURECA supercomputers in Juelich (Germany) and the Hermit supercomputer at HLRS in Stuttgart (Germany). The following programs should be installed on you machine for a proper run and processing of data. These requirements are similar to the forward solver SOFI3D.
+
+\begin{center}
+% use packages: array
+\begin{small}
+\begin{tabular}{lll}
+Program & Description & Weblink \\ 
+OpenMPI & MPI Implementation & \url{http://www.open-mpi.org} \\
+ & (for the parallelization) & \\
+MPICH2 & MPI Implementation & \tiny{\url{http://www.mcs.anl.gov/research/projects/mpich2}} \\ 
+& (for the parallelization) & \\
+LAM/MPI & MPI Implementation & \url{http://www.lam-mpi.org} \\
+& (for the parallelization) & \\
+C-Compiler & the whole code is written in C,& \\
+& any C-Compiler should be able & \\
+& to compile it & \\
+Seismic Un*x & Seismic processing package, & \url{http://www.cwp.mines.edu/cwpcodes} \\
+(SU)  & SOFI3D outputs seismic data & \\
+& in the SU format & \\
+Matlab & Preferred program package for & \url{http://www.mathworks.de} \\
+(commercial)& the visualization of snapshots, also  & \\
+& useful for the display and & \\
+& processing of seismograms & \\
+xmovie & Console based movie program, can & usually included in Linux distribution\\
+& be used for the quick display & otherwise install from repository\\
+& of snapshot data  &
+\end{tabular}
+\end{small}
+\end{center}
+\section{Installation - The folder structure}
+After unpacking the software package (e.g. by  \textbf{tar -zxvf ifos3D.tgz}) and changing to the directory ifos3D ( \textbf{cd ifos3D})  you will find different subdirectories:\vspace{0.2cm}\\
+\textbf{bin}\\
+This directory contains all executable programs, like ifos3D and snapmerge. These executables are generated using the command  \textbf{make $<$program$>$} (see below).\vspace{0.2cm}\\
+\textbf{doc}\\
+This directory contains documentation on the software (this users guide). \vspace{0.2cm}\\ 
+\textbf{mfiles}\\
+Here some Matlab routines (m-files) are stored. They can be used vor processing and visualisation of data. \vspace{0.2cm}\\
+\textbf{par}\\
+This directory contains the following folders:
+\begin{itemize}
+ \item \textbf{in\_and\_out}: contains in- and outputfiles of IFOS3D parameters
+ \item \textbf{sources}: source parameters
+ \item \textbf{receiver}: receiver locations
+ \item \textbf{su}: seismogram outputfiles
+ \item \textbf{su\_obs}: observed seismograms
+ \item \textbf{model}: model in- and output
+ \item \textbf{grad}: gradient output
+ \item \textbf{hess}: diagonal hessian in- and output
+\end{itemize}\vspace{0.2cm}
+\textbf{scripts}\\
+Here, you will find examples of script-files used to submit modeling jobs on cluster-computers.\vspace{0.2cm}\\
+\textbf{src}\\ 
+This directory contains the complete source codes. The different subprograms are listed in appendix~\ref{sec:code_overview}.\vspace{0.2cm}\\
+\textbf{libcseife}\\
+The libcseife library serves for filtering seismograms
+\section{Compilation}
+To compile ifos3D change to the \textit{par}-directory and perform \textbf{make}. The Makefile will first compile the external libseife library and then compile the main program. In some cases it's necessary to  remove the *.d files in the \textit{libseife}-directory. If problems with the compilation arise go to the \textit{libseife}-directory open \textit{Makefile} and adjust the compiler options for your system.\\
+To change the compiler options open the \textit{Makefile} in \textit{src}-directory. Here you can also find examples for compiler options on different systems where IFOS3D or SOFI3D were used in the past.
+\section{Running IFOS3D}
+To start the program with OpenMPI you can use the command\\
+\textbf{mpirun -np 8 nice -19 ../bin/ifos3D ./in\_and\_out/ifOS3D\_toy.json $\mid$ tee ./in\_and\_out/ifos3D.out}\\
+which runs IFOS3D on 8 processors with lowest priority. The standard output is written to \textit{/in\_and\_out/ifos3D.out}. You can also use the shell-script \textit{par/startIFOS3D.sh}.\\
+For 3D FWI applications it is often useful to use supercomputers in high performance computing centers. Some examples for job scripts can be found in the directory \textit{scripts}.

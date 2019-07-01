@@ -1,0 +1,158 @@
+\chapter{Source code short description}\label{sec:code_overview}
+In the following we will give a short overview about the different programs of the IFOS3D source code.\\
+\\
+\textbf{ifos3d} - main program.\\
+\\
+\textbf{Makefile} - makefile for IFOS3D.\\
+\\
+\textbf{fd.h} - include file for IFOS3D. \\
+\\
+\textbf{globvar.h} - defines global variables for IFOS3D.\\
+
+\subsection*{Subprograms}
+\textbf{absorb.c} - calculation of absorbing boundary coefficients using exponential damping \citep{Cer85}.\\
+\\
+\textbf{av\_mat.c} - averaging material parameters for the staggered-grid\\
+\\
+\textbf{checkfd\_ssg.c} - check for stability, grid dispersion and the accessibility of data output directories and files. \\
+\\
+\textbf{comm\_ini.c} - initialisation of repeated comunications. This may reduce the network overhead.\\
+\\
+\textbf{conjugategrad.c} - calculation of the conjugate gradient direction (MORA, 1987).\\
+\\
+\textbf{CPML\_coeff.c} - defining damping profiles for CPML boundary condition. This C-PML implementation is adapted from the 2nd order isotropic CPML code
+ by Dimitri Komatitsch and based in part on formulas given in Roden and Gedney (2000). \\
+\\
+\textbf{CPML\_ini\_elastic.c} - definition of CPML boundary domains for each submodel.\\
+\\
+\textbf{cpmodel.c} - copying of model parameters into a testmodel.\\
+\\
+\textbf{disc\_fourier.c} - calculation of a discrete Fourier transfomation on the fly: Fouriercomponents of forward or backpropagated wavefields are summed up for each frequency.\\
+\\
+\textbf{exchange\_Fv.c} - exchange of wavefield velocities (frequency donain) at grid boundaries between processors.\\
+\\
+\textbf{exchange\_par.c} - exchange of input parameters between processors.\\
+\\
+\textbf{exchange\_s.c} - exchange of stress values at grid boundaries between processors.\\
+\\
+\textbf{filt\_seis.c} - filtering of seismograms in time domain with a Butterworth filter of the libseife library. Lowpass or highpass filtering can be applied.  \\
+\\
+\textbf{gradient\_F.c} - gradient calculation in frequency domain: gradient as multiplication of forward and conjugate backpropagated wavefield spatial derivatives are calculated by 4th order finite differences.\\
+\\
+\textbf{hess\_apply.c} - preconditioning of gradient with diagonal Hessian approximation.\\
+\\
+\textbf{hess\_F.c} - calculation of diagonal Hessian approximation in frequency domain.\\
+\\
+\textbf{hh.c} - generation of an elastic or viscoelastic model specified by $v_p$, $v_s$ and $\rho$.\\
+\\
+\textbf{info.c} - printing information about IFOS3D.\\
+\\
+\textbf{initproc.c} - dividing the 3-D FD grid into domains and assigning the processors to these domains,\\
+\\
+\textbf{lbfgs.c} - calculation of L-BFGS update.\\
+\\
+\textbf{lbfgs\_save.c} - saving gradient for L-BFGS calculation; only first iteration, later saved in lbfgs.c.\\
+\\
+\textbf{matcopy.c} - exchange of model parameters to neighbouring processors for the averaging of material properties.\\
+\\
+\textbf{merge.c} - merge snapshots files written by the different processes to a single file. \\
+\\
+\textbf{mergemod.c} - merge model files written by the different processes to a single file. Used for gradients and model output in IFOS3D. \\
+\\
+\textbf{model2\_5D.c} - creation of a 2.5D model from a 3D model, (attention: not in parallel!!); 2.5D model parameters constant in z-direction.\\
+\\
+\textbf{modelupdate.c} - update of model for next iteration.\\
+\\
+\textbf{note.c} - writing note to stdout.\\
+\\
+\textbf{outgrad.c} - output of gradients to GRAD\_FILE.\\
+\\
+\textbf{outmod.c} - output of model parameters $v_p$, $v_s$ and $\rho$ to MOD\_OUT\_FILE.\\
+\\
+\textbf{output\_source\_signal.c} - output source signal e.g. for cross-correlation, deconvolution or comparison with analytical solutions. \\
+\\
+\textbf{outseis.c} - writing seismograms to disk. \\
+\\
+\textbf{precongrad.c} - gradient preconditioning around sources, receivers and at model boundaries.\\
+\\
+\textbf{psource.c} - generation of explosive source at source nodes.\\
+\\
+\textbf{rd\_sour.c} - reading external source wavelet.\\
+\\
+\textbf{read\_checkpoint.c} - reading wavefield from checkpoint file.\\
+\\
+\textbf{readdsk.c} - reading one single amplitude from file.\\
+\\
+\textbf{readhess.c} - reading Hessian from files.\\
+\\
+\textbf{readinv.c} - reading inversion parameters from workflow.\\
+\\
+\textbf{readmod.c} - reading elastic model properties ($v_p$, $v_s$, density) from file.\\
+\\
+\textbf{read\_par.c} - reading FD-Parameters from input-file. \\
+\\
+\textbf{readseis.c} - reading seismograms from files.\\
+\\
+\textbf{receiver.c}  - finding global grid positions for the receivers.\\
+\\
+\textbf{residual.c} - calculation of data residuals (displacement) and L2 norm.\\
+\\
+\textbf{rwsegy.c} - reading and writing SEG-Y, SU, BIN, TXT and UKOOA P190.\\
+\\
+\textbf{save\_checkpoint.c} - saving wavefield to checkpoint file.\\
+\\
+\textbf{saveseis.c} - writing seismograms to files.\\
+\\
+\textbf{segy.h} - include file for SEGY traces.\\
+\\
+\textbf{seismerge.c} - merging SEG-Y files.\\
+\\
+\textbf{seismo\_ssg.c} - storing amplitudes (particle velocities or pressure) at receiver positions in arrays.\\
+\\
+\textbf{smooth.c} - smoothing model parameters (complete model or boundaries only), not in parallel.\\
+\\
+\textbf{snapmerge.c} - loop over snapshotfiles which have to be merged.\\
+\\
+\textbf{snap\_ssg.c} - writing 3D snapshot for current timestep to disk.\\
+\\
+\textbf{sources.c} - reading source parameters from  source file.\\
+\\
+\textbf{splitrec.c} - computation of local receiver coordinates (within each subgrid). \\
+\\
+\textbf{splitsrc.c} - computation of local source coordinates (within each subgrid).\\
+\\
+\textbf{steplength.c} - steplength calculation using a parabola method.\\
+\\
+\textbf{surface\_ssg.c} - stress free surface condition using the mirroring technique.\\
+\\
+\textbf{surface\_ssg\_elastic.c} - stress free surface condition, elastic case.\\
+\\
+\textbf{timing.c} - output timing information (real time for updates etc.).\\
+\\
+\textbf{update\_s\_ssg.c} - updating stress values by a staggered grid finite difference scheme of nth order accuracy in space and second order accuracy in time (viscoelastic version).\\
+\\
+\textbf{update\_s\_ssg\_CPML.c} - updating stress values in the CPML-boundaries (4th order spatial FD sheme) (viscoelastic version).\\
+\\
+\textbf{update\_s\_ssg\_CPML\_elastic.c} - updating stress values in the CPML-boundaries (4th order spatial FD sheme) (elastic version).\\
+\\
+\textbf{update\_s\_ssg\_elastic.c} - updating stress values by a staggered grid finite difference scheme of nth order accuracy in space and second order accuracy in time (elastic version).\\
+\\
+\textbf{update\_v\_ssg.c} - updating velocity values by a staggered grid finite difference scheme of nth order accuracy in space and second order accuracy in time.\\
+\\
+\textbf{update\_v\_ssg\_CPML.c} - updating velocity values in the CPML-boundaries (4th order spatial FD sheme).\\
+\\
+\textbf{util.c} - some utility-routines from numerical recipes \citep{pre90}.\\
+\\
+\textbf{wavelet.c} - Calculating source signal at different source positions for input source parameters.\\
+\\
+\textbf{writedsk.c} - writing one single amplitude on disk.\\
+\\
+\textbf{writemod.c} - writing local model to file (not in use, see outmod).\\
+\\
+\textbf{writepar.c} - writing FD-Parameter to output file stdout or log-file.\\
+\\
+\textbf{zero\_grad.c} - initialise gradient with zero.\\
+\\
+\textbf{zero\_invers.c} - initialise wavefield (frequency domain) with zero.\\
+\\
+\textbf{zero\_wavefield.c} - initialise wavefield with zero.\\

@@ -1,0 +1,17 @@
+INSTALL for IFOS3D
+==================
+
+A detailed installation instruction is provided in the documentation.
+
+In a first step install the libcseife library:
+- change to the directory libcseife
+- adjust compiler options in Makefile
+- execute make reinstall
+
+To compile the main program (IFOS3D) a MAKEFILE is available in the 
+IFOS3D/src directory. If necessary change the compiler options in src/MAKEFILE.
+To execute the MAKEFILE use 
+
+./compileIFOS3D.sh
+
+in the IFOS3D/par directory. 

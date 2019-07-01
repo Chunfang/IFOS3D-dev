@@ -1,0 +1,134 @@
+{
+"MODELING PARAMETERS" : "comment",
+
+"Note that y denotes the vertical direction !" : "comment",
+
+"Domain Decomposition" : "comment",
+			"NPROCX" : "2",
+			"NPROCY" : "2",
+			"NPROCZ" : "2",
+
+"3-D Grid" : "comment",
+			"NX" : "160",
+			"NY" : "184",
+			"NZ" : "160",
+			"DX" : "0.8",
+			"DY" : "0.8",
+			"DZ" : "0.8",
+
+"FD order" : "comment",
+			"FDORDER" : "4",
+			"FDCOEFF" : "2",
+
+"Time Stepping" : "comment",
+			"TIME" : "0.06",
+			"DT" : "5.0e-05",
+
+"Source" : "comment",
+			"SOURCE_SHAPE" : "4",
+			"SOURCE_TYPE" : "4",
+			"ALPHA" : "45.0",
+			"BETA" : "45.0",
+			"PLANE_WAVE_DEPTH" : "0.0",
+			"PHI" : "0.0",
+			"TS" : "0.0033",
+			"SIGNAL_FILE" : "./STF/stf.su",
+			"SRCREC" : "1",
+			"SOURCE_FILE" : "./sources/sources_toy.dat",
+			"RUN_MULTIPLE_SHOTS" : "1",
+
+"Model" : "comment",
+			"READMOD" : "0",
+			"MFILE" : "model/toy",
+			
+
+"Q-approximation" : "comment",
+			"L" : "0",
+			"FL1" : "1000.0", 
+			"TAU" : "0.000001",
+
+"Free Surface" : "comment",
+			"FREE_SURF" : "0",
+			
+
+"Absorbing Boundary" : "comment",
+			"ABS_TYPE" : "1",			
+			"FW" : "10",
+			"DAMPING" : "8.0",
+			"VPPML" : "6200.0",
+			"FPML" : "200.00",
+			"BOUNDARY" : "0",
+
+"Snapshots" : "comment",
+			"SNAP" : "0",
+			"TSNAP1" : "0.01",
+			"TSNAP2" : "0.24",
+			"TSNAPINC" : "0.0075",
+			"IDX, IDY, IDZ" : "1,1,1",
+			"SNAP_FORMAT" : "4",
+			"SNAP_FILE" : "./snap/back",
+			"SNAP_PLANE" : "1",
+
+"Receiver" : "comment",
+			"SEISMO" : "1",
+			"READREC" : "0",
+			"REC_FILE" : "./receiver/receiver.dat",
+			"REFRECX, REFRECY, REFRECZ" : "0.0 , 0.0, 0.0",
+			"XREC1, YREC1, ZREC1" : "90.0 , 90.0, 90.0",
+			"XREC2, YREC2, ZREC2" : "90.0 , 90.0, 90.0",
+			"NGEOPH" : "1",
+
+"Receiver array" : "comment",
+			"REC_ARRAY" : "1",
+			"REC_ARRAY_DEPTH" : "24.0",
+			"REC_ARRAY_DIST" : "30.0",
+			"DRX" : "10",
+			"DRZ" : "10",
+			
+
+"Seismograms" : "comment",
+			"NDT" : "1",
+			"NDTSHIFT" : "0",
+			"SEIS_FORMAT" : "1",
+			"SEIS_FILE" : "su/IFOS",
+
+
+"Method" : "comment",
+			"METHOD" : "0",
+			
+"INVERSION PARAMETERS" : "comment",
+
+"In- and Output Files" : "comment",
+			"GRAD_FILE" : "./grad/toy_grad",
+			"MOD_OUT_FILE" : "./model/toy",
+			"SEIS_OBS_FILE" : "./su_obs/obs_toy",
+			"EXTOBS" : "0",
+			"INV_FILE" : "./in_and_out/workflow_toy.dat",
+			"HESS_FILE" : "./hess/toy_hess",
+
+"General" : "comment",
+			"ITMIN, ITMAX" : "1 , 80",
+			"FILT" : "1",
+			"NFMAX" : "5",
+			"TAST" : "100",
+			"VP0, VS0, RHO0" : "6200.0, 3600.0, 2800.0",
+			"WEIGHT_VP,WEIGHT_VS,WEIGHT_RHO" : "1.0, 1.0, 0.0",
+
+"Steplength estimation" : "comment",
+			"NSHOTS_STEP" : "4",
+			"TESTSTEP" : "0.02",
+
+"Gradient preconditioning" : "comment",
+			"DAMPTYPE" : "2",
+
+"Hessian" : "comment",
+			"HESS" : "0",
+			"READ_HESS" : "0",
+			"REC_HESS" : "1", 
+			"WATER_HESS_VP, WATER_HESS_VS, WATER_HESS_RHO" : "0.0192, 0.0192, 1.0e-14",
+ 
+"L-BFGS" : "comment",
+			"LBFGS" : "0",
+			"NUMPAR" : "2",
+			"BFGSNUM" : "5"
+}

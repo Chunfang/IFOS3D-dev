@@ -1,0 +1,165 @@
+\documentclass[12pt,twoside,a4paper]{report}
+%\usepackage{ngerman}
+\usepackage[ngerman,english]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[reqno]{amsmath}
+\usepackage{natbib}
+\usepackage{anysize}
+%\usepackage{sidecap}
+%\marginsize{3.0}{1.0}{1.0}{1.0}
+
+\usepackage{pslatex}
+\usepackage{graphicx}
+\usepackage{color}
+\definecolor{Gray}{gray}{0.5}
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\usepackage[position=top,singlelinecheck=false]{subfig}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage[verbose]{placeins}
+%\usepackage{longtable}
+\setlength{\parindent}{0mm}
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+\usepackage{amssymb}
+
+% Kopf- und Fusszeilen definieren
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\slshape \rightmark}
+\fancyhead[LO]{\slshape \leftmark}
+\fancyfoot[C]{}
+
+% Aendern der Schriftart
+\usepackage{mathptmx}
+\usepackage[scaled=0.92]{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+% Changing font for mathcal
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+% adding hyperref package
+% - adding backlinks in bibliography by option pagebackref
+\usepackage[colorlinks, linkcolor = black, citecolor = black, filecolor = black, urlcolor = blue]{hyperref}
+
+\usepackage{eso-pic}
+\usepackage{color}
+
+\usepackage{bibentry}
+\nobibliography*
+% define depth of table of content
+\setcounter{tocdepth}{2}
+
+
+%----------------------------------------------------------------------
+% my definitions
+\DeclareMathOperator\Sdd{\mathrm{d}}
+
+
+\begin{document}
+
+%-------------------- Titelseite --------------------%
+\input{manual_title.tex}
+
+\FloatBarrier
+\newpage 
+\thispagestyle{empty}
+\quad 
+\newpage
+
+\pagestyle{fancy}
+%-------------------- Titelseite (Ende) --------------------%
+%\input{Abstract.tex}
+%\cleardoublepage
+
+
+\pagenumbering{Roman}
+
+\section*{Authors}
+
+The IFOS3D code was first developed by Simone Butzer at the Karlsruhe Institute of Technology (KIT) from 2009-2014. Contributions were given by Andre Kurzmann and Lisa Groos.\\
+\newline
+The forward code is based on the viscoelastic FD code SOFI3D by \cite{boh02}.\\
+\newline
+Different external libraries for time domain filtering are used. The copyright of the source codes are held by different persons:\\
+\newline
+cseife.c, cseife.h:\\ 
+Copyright $\copyright$ 2005 by Thomas Forbriger (BFO Schiltach) \\
+\newline
+cseife\_deriv.c, cseife\_gauss.c, cseife\_rekfl.c, cseife\_rfk.c and cseife\_tides.c:\\
+Copyright $\copyright$ 1984 by Erhard Wielandt\\
+This algorithm was part of seife.f. A current version of seife.f can be obtained from http://www.software-for-seismometry.de/\\
+\newline 
+The Matlab implementation of a few SU routines, mainly used to read and write SU files are:\\
+Copyright $\copyright$ 2008, Signal Analysis and Imaging Group\\
+For more information: http://www-geo.phys.ualberta.ca/saig/SeismicLab\\
+Author: M.D.Sacchi\\
+\newline
+
+%\noindent
+%Since then it has been developed and maintained by a development team: in alphabetical order,\\
+%\newline
+%(since 2015)\\
+%...
+% (add other developers here in the future).
+
+\newpage
+
+\section*{License}\label{license}
+
+IFOS3D is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.0 of the License only.\\
+ \newline
+IFOS3D is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with IFOS3D. See file COPYING and/or \path{http://www.gnu.org/licenses/gpl-2.0.html}.\\
+\newline
+The Authors of IFOS3D are listed in file \path{AUTHORS}.
+%------------------------------------------------------------------------------------------------%
+\section*{Acknowledgments}
+%------------------------------------------------------------------------------------------------%
+
+We thank the seismic working group of the Geophysical Institute at KIT for constructive discussions. 
+
+\noindent The development of the code was supported by the Karlsruhe Institute of Technology (KIT), the Deutsche Forschungsgemeinschaft (DFG), the Bundesministerium f\"ur Bildung und Forschung (BMBF) and the Wave Inversion Technology (WIT) Consortium.
+
+\noindent The code was tested and optimized at the computing centres of the Karlsruhe Institute of Technology (KIT), the supercomputing center in Juelich and the HLRS in Stuttgart. 
+\newline
+
+%------------------------------------------------------------------------------------------------%
+\section*{References}
+%------------------------------------------------------------------------------------------------%
+
+\noindent\bibentry{But13}\\
+
+\noindent\bibentry{But15}\\
+
+\tableofcontents
+\cleardoublepage
+\pagenumbering{arabic}
+
+%Implementation FWI
+\input{manual_summary.tex}
+\clearpage
+\input{manual_implementation.tex}
+\clearpage
+\input{manual_howto.tex}
+\clearpage
+\input{manual_input.tex}
+\clearpage
+\input{manual_toy.tex}
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{gji}
+\bibliography{manual_IFOS3D}
+
+
+\begin{appendix}
+\input{manual_code_overview.tex}
+\end{appendix}
+
+%\cleardoublepage
+%\input{Danksagung.tex} 
+
+\end{document}
