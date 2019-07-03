@@ -1,0 +1,7 @@
+*.kdev4
+*.swp
+
+*.backup
+*~*
+*.orig
+manual_IFOS3D.pdf
